@@ -1,4 +1,10 @@
 SELECT DISTINCT actorId
-FROM Actors NATURAL JOIN Movies NATURAL JOIN PlaysIn
-Where rating > 70
-ORDER BY actorId ASC
+FROM Movies NATURAL JOIN PlaysIn
+WHERE rating > 7
+
+EXCEPT
+
+SELECT DISTINCT actorId
+FROM Movies NATURAL JOIN PlaysIn
+WHERE rating < 7 or rating = 7 or rating IS NULL
+ORDER BY actorId ASC;
